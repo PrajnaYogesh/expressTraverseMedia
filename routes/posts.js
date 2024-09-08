@@ -43,4 +43,19 @@ res.status(404).json({msg: `Post with ${id} not found`})
 
 })
 
+
+// create new post
+router.post('/',(req,res)=>{
+    console.log(req.body); // to access the body sent in req, we need to add express.json and urlencoded in server.js
+const newPost = {
+    id : posts.length+1,
+    title : req.body.title,
+}
+if(!newPost.title){
+    return res.status(400).json({message: "Please include a title"})
+}
+posts.push(newPost)
+    res.status(201).json(posts);    
+})
+
 module.exports = router;

@@ -35,3 +35,6 @@ stop and start server
 9. created router folder. create express and router from express. moved methods from server to here. get using router and also export router
 
 10.you can import/export 2 ways -> common js way and import/export way
+
+11. body parser middleware.it is now included with express.we just have to add a line. using this we can handle the 'HTTP request bodies' in backend . , when building RESTful APIs, it ensures that the data sent by the client is correctly parsed and ready for processing by backend logic.
+app.use(express.json());

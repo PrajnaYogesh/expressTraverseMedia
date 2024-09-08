@@ -2,7 +2,18 @@ const express = require('express')
 const app = express();
 const path = require('path')
 const PORT = process.env.PORT|| 8000;
-const posts = require('./routes/posts')
+const posts = require('./routes/posts');
+const exp = require('constants');
+
+// we are adding a body parser middleware here. we add it to access data sent in body from request
+app.use(express.json());
+//we add the below line to access form data sent in the request body
+app.use(express.urlencoded({extended:false}));
+
+
+
+
+
 //we can make a folder static and here we set up public folder as static --> it is a express static  middleware, we use  'use' keyword
 // app.use(express.static(path.join(__dirname,'public')))  // we made public as static folder
 
