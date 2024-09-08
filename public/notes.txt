@@ -38,3 +38,7 @@ stop and start server
 
 11. body parser middleware.it is now included with express.we just have to add a line. using this we can handle the 'HTTP request bodies' in backend . , when building RESTful APIs, it ensures that the data sent by the client is correctly parsed and ready for processing by backend logic.
 app.use(express.json());
+
+12. how to get, post, put and delete  steps performed 
+
+13. we always get the data from front end as a string..we should always parse it to int if required using parseInt

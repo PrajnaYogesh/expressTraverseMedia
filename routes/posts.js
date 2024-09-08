@@ -58,4 +58,30 @@ posts.push(newPost)
     res.status(201).json(posts);    
 })
 
+
+//update a post
+router.put('/:id',(req,res)=>{
+const id = parseInt(req.params.id)
+const post = posts.find(post => post.id === id)
+if(!post){
+    return res.status(401).json({msg: `A post with ${id} is not found`})
+}
+post.title = req.body.title;
+res.status(200).json(post)
+
+})
+
+//Delete a post
+
+router.delete('/:id',(req,res)=>{
+    const id = parseInt(req.params.id); // input always recieved as string, parse it to int
+    const post = posts.find((post)=> post.id === id);
+if(!post){
+   return res.status(404).json({msg:`A post with ${id} is not found`})
+}
+posts = posts.filter((post)=> post.id !== id);
+res.status(200).json(posts)
+    })
+
+
 module.exports = router;
