@@ -1,0 +1,28 @@
+1. //one way to restart a server automatically is install nodemon and add script  in package.json.. "start" : "nodemon server" and run => npm start
+//another way is using watch..add the start and dev script as we used here in package.json and run =>  npm run dev
+  "start":"node server",
+    "dev": "node --watch server"
+
+
+2. 
+we created a path variable on top to access folders and file and using the below path.join, we can access the folder and file we want to go to when you hit the url
+ const path = require('path')
+ 
+ app.get('/',(req,res)=>{
+ res.send('Hello World!!!!');
+ res.sendFile(path.join(__dirname,'public','index.html')) //public is the folder and index.html is file..since wea re using folder and file we used join
+ })
+
+
+3. static middleware : instead of creating path for each requests, we can make a folder as static and access acess all files inside it directly. we created public folder as static
+app.use(express.static(path.join(__dirname,'public')))  // we made public as static folder
+
+4) .env file used to store secret info's
+we created .env file and in server.js..can access it using 
+const variable = process.env.<variable name created in .env file>
+also have to add it in package.json in dev
+    "dev": "node --watch --env-file=.env server"
+
+stop and start server
+
+
