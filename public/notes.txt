@@ -23,6 +23,8 @@ const variable = process.env.<variable name created in .env file>
 also have to add it in package.json in dev
     "dev": "node --watch --env-file=.env server"
 
+IMP: no need to use .env package if using above method
+
 stop and start server
 
 
