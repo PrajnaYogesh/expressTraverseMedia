@@ -27,4 +27,11 @@ IMP: no need to use .env package if using above method
 
 stop and start server
 
+5. access parameters
+6.access query parameters
+7.add status code and error message
+8. remove redundant code in if else condition
 
+9. created router folder. create express and router from express. moved methods from server to here. get using router and also export router
+
+10.you can import/export 2 ways -> common js way and import/export way
