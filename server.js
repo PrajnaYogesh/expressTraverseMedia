@@ -3,13 +3,19 @@ const app = express();
 const path = require('path')
 const PORT = process.env.PORT|| 8000;
 const posts = require('./routes/posts');
-const exp = require('constants');
+const logger = require('./middleware/logger')  // use logger for every call..2nd type..check notes
+const errorHandler= require('./middleware/error')
+
 
 // we are adding a body parser middleware here. we add it to access data sent in body from request
 app.use(express.json());
 //we add the below line to access form data sent in the request body
 app.use(express.urlencoded({extended:false}));
 
+
+
+//logger middleware
+app.use(logger)  // use logger for every call..2nd type..check notes
 
 
 
@@ -34,6 +40,17 @@ app.use(express.urlencoded({extended:false}));
 
 // Routes
 app.use('/api/posts',posts)
+
+
+//added error handler for requests other than our end points 
+app.use((req,res,next)=>{
+    const error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+})
+
+//use errorHandler middleware ..always use it below routes
+app.use(errorHandler);
 
 app.listen(PORT,()=>{
     console.log(`server listening at ${PORT}`);

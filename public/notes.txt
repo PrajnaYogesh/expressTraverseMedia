@@ -42,3 +42,25 @@ app.use(express.json());
 12. how to get, post, put and delete  steps performed 
 
 13. we always get the data from front end as a string..we should always parse it to int if required using parseInt
+
+14.  use middleware for logger functions.we can do it for each function or in app level to log when each end point is hit
+1.calling for each function -> create a logger and call that logger in each end point function between end point and callback function
+2. to have it created to be called for every function follow the below steps
+a)create a middleware folder and create logger.js and put the code there..export it
+b) import in server.js and add app.use(logger) 
+c) any url u hit,the logger will run
+
+
+15) Error handler middleware
+create a errorhandler file inside middleware folder and use it in the server.js and also call it from the call back function of each endpoint..dont forget to add next in parameter of call back 
+
+16. added error handler for requests other than our end points specified
+app.use((req,res,next)=>{
+    const error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+})
+
+
+17. npm i colors
+allows to add color to console
